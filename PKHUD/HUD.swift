@@ -30,11 +30,6 @@ public enum HUDContentType {
 public final class HUD {
 
     // MARK: Properties
-    public static var dimsBackground: Bool {
-        get { return PKHUD.sharedHUD.dimsBackground }
-        set { PKHUD.sharedHUD.dimsBackground = newValue }
-    }
-
     public static var allowsInteraction: Bool {
         get { return PKHUD.sharedHUD.userInteractionOnUnderlyingViewsEnabled  }
         set { PKHUD.sharedHUD.userInteractionOnUnderlyingViewsEnabled = newValue }
