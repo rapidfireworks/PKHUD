@@ -20,7 +20,6 @@ class DemoViewController: UIViewController {
         view.addSubview(hiddenTextField)
         HUD.registerForKeyboardNotifications()
         
-        HUD.dimsBackground = false
         HUD.allowsInteraction = false
     }
     

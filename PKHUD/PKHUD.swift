@@ -85,7 +85,6 @@ open class PKHUD: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
 
-    open var dimsBackground = true
     open var userInteractionOnUnderlyingViewsEnabled: Bool {
         get {
             return !container.isUserInteractionEnabled
@@ -130,9 +129,6 @@ open class PKHUD: NSObject {
             container.frame.size = view.frame.size
             container.autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
             container.isHidden = true
-        }
-        if dimsBackground {
-            container.showBackground(animated: true)
         }
 
         // If the grace time is set, postpone the HUD display
