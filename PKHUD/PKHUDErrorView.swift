@@ -17,11 +17,11 @@ open class PKHUDErrorView: PKHUDSquareBaseView, PKHUDAnimating {
 
     class func generateDashLayer() -> CAShapeLayer {
         let dash = CAShapeLayer()
-        dash.frame = CGRect(x: 0.0, y: 0.0, width: 88.0, height: 88.0)
+        dash.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         dash.path = {
             let path = UIBezierPath()
-            path.move(to: CGPoint(x: 0.0, y: 44.0))
-            path.addLine(to: CGPoint(x: 88.0, y: 44.0))
+            path.move(to: CGPoint(x: 0, y: 22))
+            path.addLine(to: CGPoint(x: 44, y: 22))
             return path.cgPath
         }()
 
@@ -37,7 +37,7 @@ open class PKHUDErrorView: PKHUDSquareBaseView, PKHUDAnimating {
 
         dash.fillColor   = nil
         dash.strokeColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0).cgColor
-        dash.lineWidth   = 6
+        dash.lineWidth   = 3
         return dash
     }
 

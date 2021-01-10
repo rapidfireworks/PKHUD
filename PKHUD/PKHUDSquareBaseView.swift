@@ -12,7 +12,10 @@ import UIKit
 /// PKHUDSquareBaseView provides a square view, which you can subclass and add additional views to.
 open class PKHUDSquareBaseView: UIView {
 
-    static let defaultSquareBaseViewFrame = CGRect(origin: CGPoint.zero, size: CGSize(width: 156.0, height: 156.0))
+    static let defaultSquareBaseViewFrame = CGRect(
+      origin: .zero,
+      size: CGSize(width: 78, height: 78)
+    )
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,12 +28,8 @@ open class PKHUDSquareBaseView: UIView {
     public init(image: UIImage? = nil, title: String? = nil, subtitle: String? = nil) {
         super.init(frame: PKHUDSquareBaseView.defaultSquareBaseViewFrame)
         self.imageView.image = image
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
 
         addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
     }
 
     public let imageView: UIImageView = {
@@ -41,28 +40,6 @@ open class PKHUDSquareBaseView: UIView {
         return imageView
     }()
 
-    public let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 17.0)
-        label.textColor = UIColor.black.withAlphaComponent(0.85)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.25
-        return label
-    }()
-
-    public let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 14.0)
-        label.textColor = UIColor.black.withAlphaComponent(0.7)
-        label.adjustsFontSizeToFitWidth = true
-        label.numberOfLines = 2
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.25
-        return label
-    }()
-
     open override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -71,13 +48,6 @@ open class PKHUDSquareBaseView: UIView {
         let viewWidth = bounds.size.width - 2 * margin
         let viewHeight = bounds.size.height
 
-        let halfHeight = CGFloat(ceilf(CFloat(viewHeight / 2.0)))
-        let quarterHeight = CGFloat(ceilf(CFloat(viewHeight / 4.0)))
-        let threeQuarterHeight = CGFloat(ceilf(CFloat(viewHeight / 4.0 * 3.0)))
-
-        titleLabel.frame = CGRect(origin: CGPoint(x: originX, y: 0.0), size: CGSize(width: viewWidth, height: quarterHeight))
-        imageView.frame = CGRect(origin: CGPoint(x: originX, y: quarterHeight), size: CGSize(width: viewWidth, height: halfHeight))
-        subtitleLabel.frame = CGRect(origin: CGPoint(x: originX, y: threeQuarterHeight), size: CGSize(width: viewWidth, height: quarterHeight))
-
+        imageView.frame = CGRect(origin: CGPoint(x: originX, y: 0), size: CGSize(width: viewWidth, height: viewHeight))
     }
 }
