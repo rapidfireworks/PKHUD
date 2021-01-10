@@ -49,8 +49,13 @@ public final class HUD {
 
     // MARK: Public methods, PKHUD based
     public static func show(_ content: HUDContentType, onView view: UIView? = nil) {
-        PKHUD.sharedHUD.contentView = contentView(content)
-        PKHUD.sharedHUD.show(onView: view)
+        switch (content, PKHUD.sharedHUD.contentView) {
+        case (.progress, is PKHUDProgressView):
+            return
+        default:
+            PKHUD.sharedHUD.contentView = contentView(content)
+            PKHUD.sharedHUD.show(onView: view)
+        }
     }
 
     public static func hide(_ completion: ((Bool) -> Void)? = nil) {
