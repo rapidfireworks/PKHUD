@@ -49,8 +49,8 @@ public final class HUD {
 
     // MARK: Public methods, PKHUD based
     public static func show(_ content: HUDContentType, onView view: UIView? = nil) {
-        switch (content, PKHUD.sharedHUD.contentView) {
-        case (.progress, is PKHUDProgressView):
+        switch (content, PKHUD.sharedHUD.contentView, PKHUD.sharedHUD.isVisible) {
+        case (.progress, is PKHUDProgressView, true):
             return
         default:
             PKHUD.sharedHUD.contentView = contentView(content)
